@@ -1,0 +1,13 @@
+#saxmlrpcForm {
+    width: 80%;
+}
+
+#saxmlrpcForm table input {
+    width: 70%;
+}
+
+.sa_message p {
+    background: #fff;
+    margin: 10px 0;
+    padding: 10px;
+}
