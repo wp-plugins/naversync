@@ -19,7 +19,7 @@
         <tr>
             <th>네이버 블로그 ID</th>
             <td>
-                <input type="text" name="id" value="<?= $id ?>"/>
+                <input type="text" name="id" value="<?php _e($id) ?>"/>
 
                 <p>네이버 블로그 아이디를 입력해주세요.</p>
             </td>
@@ -27,7 +27,7 @@
         <tr>
             <th>네이버 블로그 글쓰기 api키</th>
             <td>
-                <input type="text" name="api_key" value="<?= $api_key ?>"/>
+                <input type="text" name="api_key" value="<?php _e($api_key) ?>"/>
 
                 <p>네이버 블로그에서 APIKEY를 확인한 후 입력해주세요.</p>
             </td>
@@ -36,8 +36,8 @@
             <th>사용여부</th>
             <td>
                 <select name="api_use_yn" id="api_use_yn">
-                    <option value="Y" <?php if ($useYn == 'Y') { ?>selected="selected"<?php } ?>>사용함</option>
-                    <option value="N" <?php if ($useYn == 'N') { ?>selected="selected"<?php } ?>>사용안함</option>
+                    <option value="Y" <?php if ($useYn == 'Y') : ?>selected="selected"<?php endif ?>>사용함</option>
+                    <option value="N" <?php if ($useYn == 'N') : ?>selected="selected"<?php endif ?>>사용안함</option>
                 </select>
 
                 <p>글 작성시 사용여부를 선택해주세요. 사용안함을 선택할경우 동작하지 않습니다.</p>
@@ -57,15 +57,15 @@
     </table>
 
     <div class="sa_message">
-        <?php if (isset($error_message) && !empty($error_message)) { ?>
-            <p><?= $error_message; ?></p>
-        <? } ?>
-        <?php if (isset($error_message) && empty($error_message)) { ?>
+        <?php if (isset($error_message) && !empty($error_message)) : ?>
+            <p><?php _e($error_message); ?></p>
+        <?php endif; ?>
+        <?php if (isset($error_message) && empty($error_message)) : ?>
             <p>
-                <strong><?= $user_info->nickname ?></strong>님 네이버 글쓰기 api에 연결되었습니다.
-                <a class="button" href="<?= $user_info->url ?>" target="_blank" style="margin-left:10px;">블로그 가기</a>
+                <strong><?php _e($user_info->nickname) ?></strong>님 네이버 글쓰기 api에 연결되었습니다.
+                <a class="button" href="<?php _e($user_info->url) ?>" target="_blank" style="margin-left:10px;">블로그 가기</a>
             </p>
-        <?php } ?>
+        <?php endif ?>
     </div>
 
     <div class="tablenav">

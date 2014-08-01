@@ -25,39 +25,42 @@ class NaverXmlRpcController {
     var $blog_del_useYn;
 
     function __construct() {
-        add_option(OPTION_KEY_RPC_ID, '');
-        add_option(OPTION_KEY_RPC_API_KEY, '');
-        add_option(OPTION_KEY_RPC_USE_YN, 'Y');
-        add_option(OPTION_KEY_RPC_DEL_USE_YN, 'N');
-        add_option(OPTION_KEY_RPC_FLAG, false);
-	
-        $this->blog_id = get_option(OPTION_KEY_RPC_ID);
-        $this->blog_api_key = get_option(OPTION_KEY_RPC_API_KEY);
-        $this->blog_rpc_useYn = get_option(OPTION_KEY_RPC_USE_YN);
-        $this->blog_check_flag = get_option(OPTION_KEY_RPC_FLAG);
-        $this->blog_del_useYn = get_option(OPTION_KEY_RPC_DEL_USE_YN);
-		
-        if (!empty($this->blog_id) && !empty($this->blog_api_key))
-            $this->rpc = new SANaverXmlRpc($this->blog_id, $this->blog_api_key);
-        
-        
-        if ($this->blog_check_flag && $this->blog_rpc_useYn == 'Y') {
-            add_action('init', array($this, 'add_cmb'), 9999);
-            add_filter('cmb_meta_boxes', array($this, 'add_meta_box'));
-            add_filter('content_save_pre', array($this, 'content_save_pre'));
-
-            if ($this->blog_del_useYn == 'Y') {
-                add_action('trashed_post', array($this, 'trashed_post'));
-                add_action('untrashed_post', array($this, 'untrashed_post'));
-            }
-        }
-
-        if ($_REQUEST['page'] == 'naver_xml_rpc') {
-            add_action('admin_init', array($this, 'add_style'));
-            add_action('admin_init', array($this, 'process'));
-        }
-
-        add_action('admin_menu', array($this, 'admin_menu'));
+    	try{
+    		add_option(OPTION_KEY_RPC_ID, '');
+    		add_option(OPTION_KEY_RPC_API_KEY, '');
+    		add_option(OPTION_KEY_RPC_USE_YN, 'Y');
+    		add_option(OPTION_KEY_RPC_DEL_USE_YN, 'N');
+    		add_option(OPTION_KEY_RPC_FLAG, false);
+    		
+    		$this->blog_id = get_option(OPTION_KEY_RPC_ID);
+    		$this->blog_api_key = get_option(OPTION_KEY_RPC_API_KEY);
+    		$this->blog_rpc_useYn = get_option(OPTION_KEY_RPC_USE_YN);
+    		$this->blog_check_flag = get_option(OPTION_KEY_RPC_FLAG);
+    		$this->blog_del_useYn = get_option(OPTION_KEY_RPC_DEL_USE_YN);
+    		
+    		if (!empty($this->blog_id) && !empty($this->blog_api_key))
+    			$this->rpc = new SANaverXmlRpc($this->blog_id, $this->blog_api_key);
+    		
+    		if ($this->blog_check_flag && $this->blog_rpc_useYn == 'Y') {
+    			add_action('init', array($this, 'add_cmb'), 9999);
+    			add_filter('cmb_meta_boxes', array($this, 'add_meta_box'));
+    			add_filter('content_save_pre', array($this, 'content_save_pre'));
+    		
+    			if ($this->blog_del_useYn == 'Y') {
+    				add_action('trashed_post', array($this, 'trashed_post'));
+    				add_action('untrashed_post', array($this, 'untrashed_post'));
+    			}
+    		}
+    		
+    		if ($_REQUEST['page'] == 'naver_xml_rpc') {
+    			add_action('admin_init', array($this, 'add_style'));
+    			add_action('admin_init', array($this, 'process'));
+    		}
+    		
+    		add_action('admin_menu', array($this, 'admin_menu'));    		
+    	}catch(Exception $e){
+    		echo $e->getMessage();
+    	}
     }
 
     function add_style() {
@@ -126,8 +129,8 @@ class NaverXmlRpcController {
         }
 
         extract($param);
-
-        include dirname(__FILE__) . '/views/setting.php';
+		
+        include_once dirname(__FILE__) . '/views/setting.php';
     }
 
     /*****************************************************************************************************

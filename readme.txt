@@ -41,4 +41,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 = 0.7 =
 * 흰색화면 오류 수정
 
+= 0.8 =
+* <?= 태그 제거
+
 == Upgrade Notice ==
