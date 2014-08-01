@@ -38,4 +38,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * 수정하면 게시물 중복 업로드 되는 버그 수정. 
 * eval 태그 삭제.
 
+= 0.7 =
+* 흰색화면 오류 수정
+
 == Upgrade Notice ==

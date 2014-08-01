@@ -3,7 +3,7 @@
 Plugin Name: SANaverSync
 Plugin URI: http://www.saweb.co.kr
 Description: 네이버싱크 플러그인은 네이버 블로그에 워드프레스에 동일한 글이 등록.수정.삭제될수 있는 기능을 제공하는 플러그인 입니다.
-Version: 0.6
+Version: 0.7
 Author: SAWeb
 Author URI: http://www.saweb.co.kr
 */
@@ -30,16 +30,17 @@ class NaverXmlRpcController {
         add_option(OPTION_KEY_RPC_USE_YN, 'Y');
         add_option(OPTION_KEY_RPC_DEL_USE_YN, 'N');
         add_option(OPTION_KEY_RPC_FLAG, false);
-
+	
         $this->blog_id = get_option(OPTION_KEY_RPC_ID);
         $this->blog_api_key = get_option(OPTION_KEY_RPC_API_KEY);
         $this->blog_rpc_useYn = get_option(OPTION_KEY_RPC_USE_YN);
         $this->blog_check_flag = get_option(OPTION_KEY_RPC_FLAG);
         $this->blog_del_useYn = get_option(OPTION_KEY_RPC_DEL_USE_YN);
-
+		
         if (!empty($this->blog_id) && !empty($this->blog_api_key))
             $this->rpc = new SANaverXmlRpc($this->blog_id, $this->blog_api_key);
-
+        
+        
         if ($this->blog_check_flag && $this->blog_rpc_useYn == 'Y') {
             add_action('init', array($this, 'add_cmb'), 9999);
             add_filter('cmb_meta_boxes', array($this, 'add_meta_box'));
@@ -126,7 +127,7 @@ class NaverXmlRpcController {
 
         extract($param);
 
-        include_once dirname(__FILE__) . '/views/setting.php';
+        include dirname(__FILE__) . '/views/setting.php';
     }
 
     /*****************************************************************************************************
