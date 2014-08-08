@@ -3,7 +3,7 @@
 Plugin Name: SANaverSync
 Plugin URI: http://www.saweb.co.kr
 Description: 네이버싱크 플러그인은 네이버 블로그에 워드프레스에 동일한 글이 등록.수정.삭제될수 있는 기능을 제공하는 플러그인 입니다.
-Version: 0.7
+Version: 0.8
 Author: SAWeb
 Author URI: http://www.saweb.co.kr
 */
@@ -52,7 +52,7 @@ class NaverXmlRpcController {
     			}
     		}
     		
-    		if ($_REQUEST['page'] == 'naver_xml_rpc') {
+    		if ($this->getParameter('page') == 'naver_xml_rpc') {
     			add_action('admin_init', array($this, 'add_style'));
     			add_action('admin_init', array($this, 'process'));
     		}
@@ -214,7 +214,7 @@ class NaverXmlRpcController {
     function content_save_pre($content) {
         global $post;
 
-        $v = $_POST['XML_RPC_naver'];
+        $v = @$_POST['XML_RPC_naver'];
 
         if ($v == 'no-use' || empty($_POST['content']) || empty($_POST['post_title']) || $_POST['post_type'] == 'page')
             return $content;
