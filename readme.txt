@@ -23,7 +23,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 3. 워드프레스 관리자화면 ) 설정 -> 네이버싱크에서 각 설정항목 입력 (하단 누구누구님 네이버 글쓰기 API에 연결되었습니다.가 나왔을 경우 설정 완료)
 
 == Frequently Asked Questions ==
-궁금하신사항이 있으면 http://www.saweb.co.kr에 방문하셔서 댓글로 문의해주시기 바랍니다.
+궁금하신사항이 있으면 http://www.saweb.co.kr 에 방문하셔서 댓글로 문의해주시기 바랍니다.
 
 == Screenshots ==
 1. 관리자 모드
