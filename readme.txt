@@ -30,6 +30,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 2. 글작성 화면
 
 == Changelog ==
+= 1.0 =
+* 미디어 추가 오류 수정
+
 = 0.9 =
 * php5.2 지원
 * 예약발행 오류 수정
