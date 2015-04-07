@@ -8,11 +8,11 @@ if ( ! class_exists( 'SANaverRpcParam' ) ) {
 	class SANaverRpcParam {
 		var $post_id = '';
 
-		var $publish     = true;
-		var $title       = '';
+		var $publish = true;
+		var $title = '';
 		var $description = '';
-		var $categories  = array();
-		var $tags        = array();
+		var $categories = array();
+		var $tags = array();
 
 		public function getStruct() {
 			return array(
@@ -125,13 +125,13 @@ if ( ! class_exists( 'SANaverRpcParam' ) ) {
 		public function getMimeType( $type ) {
 			$types = array(
 				'gif'  => 'image/gif'
-				,
+			,
 				'png'  => 'image/png'
-				,
+			,
 				'jpeg' => 'image/jpeg'
-				,
+			,
 				'jpg'  => 'image/jpeg'
-				,
+			,
 				'bmp'  => 'image/bmp'
 			);
 
@@ -309,6 +309,8 @@ if ( ! class_exists( 'SANaverXmlRpc' ) ) {
 			$this->api_key = $api_key;
 
 			$this->client = new xmlrpc_client ( self::NAVER_XML_RPC_URL );
+
+			$this->client->verifypeer = false;
 		}
 
 		public function setCharset( $charset ) {
